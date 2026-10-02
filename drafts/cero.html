@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRAFT Cero — Oxygen</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f6f8; color: #101418;
+    font-family: system-ui, sans-serif; }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 24px; }
+  nav { display: flex; justify-content: space-between; padding: 20px 0;
+    font-size: 14px; font-family: monospace; }
+  nav a { color: #101418; }
+  .hero { text-align: center; padding: 40px 0 10px; }
+  .zero { font-size: clamp(150px, 34vw, 330px); font-weight: 800;
+    letter-spacing: -.06em; line-height: .9; margin: 0;
+    background: linear-gradient(180deg, #101418, #5b6b7d);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .zero-sub { font-size: clamp(20px, 3.4vw, 30px); font-weight: 700;
+    letter-spacing: -.02em; margin: 6px 0 14px; }
+  .lede { color: #46525f; max-width: 560px; margin: 0 auto 30px; font-size: 18px; }
+  .btn { display: inline-block; background: #101418; color: #fff;
+    padding: 16px 40px; border-radius: 999px; text-decoration: none;
+    font-weight: 700; }
+  .btn.alt { background: #fff; color: #101418; border: 2px solid #101418;
+    margin-left: 10px; }
+  /* CSS browser mockup */
+  .browser { margin: 50px auto 0; max-width: 760px; border: 2px solid #101418;
+    border-radius: 14px; overflow: hidden; background: #fff;
+    box-shadow: 10px 10px 0 #101418; text-align: left; }
+  .chrome { background: #e3e9ef; padding: 10px 14px; display: flex; gap: 8px;
+    align-items: center; border-bottom: 2px solid #101418; }
+  .chrome i { width: 12px; height: 12px; border-radius: 50%; background: #101418;
+    display: block; }
+  .chrome i:nth-child(2), .chrome i:nth-child(3) { background: #9aa7b4; }
+  .url { flex: 1; background: #fff; border: 2px solid #101418; border-radius: 999px;
+    font-family: monospace; font-size: 13px; padding: 4px 16px; }
+  .page { padding: 46px 30px; text-align: center; }
+  .page h2 { margin: 0 0 6px; font-size: 26px; letter-spacing: -.01em; }
+  .page p { color: #46525f; margin: 0 0 20px; }
+  .ping { display: inline-block; border: 2px dashed #9aa7b4; color: #9aa7b4;
+    border-radius: 10px; padding: 12px 26px; font-family: monospace; }
+  /* ledger */
+  h3.sec { font-size: 15px; font-family: monospace; letter-spacing: .2em;
+    text-transform: uppercase; color: #5b6b7d; margin: 70px 0 6px;
+    border-top: 2px solid #101418; padding-top: 26px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { text-align: left; font-family: monospace; font-size: 12px;
+    letter-spacing: .12em; text-transform: uppercase; color: #5b6b7d;
+    padding: 10px 8px; border-bottom: 2px solid #101418; }
+  td { padding: 11px 8px; border-bottom: 1px solid #d5dde4; }
+  td.n { font-family: monospace; text-align: right; white-space: nowrap; }
+  td.del { color: #b00020; }
+  tr.total td { font-weight: 800; border-bottom: 2px solid #101418;
+    border-top: 2px solid #101418; }
+  .note { font-size: 13px; color: #5b6b7d; font-family: monospace; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+  .qa { border: 2px solid #101418; border-radius: 12px; padding: 20px 22px;
+    background: #fff; }
+  .qa b { display: block; margin-bottom: 6px; }
+  .qa p { margin: 0; color: #46525f; font-size: 15px; }
+  footer { margin: 60px 0 0; border-top: 2px solid #101418; padding: 20px 0 50px;
+    display: flex; justify-content: space-between; font-size: 13px;
+    font-family: monospace; color: #5b6b7d; }
+  footer a { color: #101418; }
+  @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><strong>O₂ · draft E</strong><span><a href="#">descargar</a> · <a href="../">← volver</a></span></nav>
+  <div class="hero">
+    <p class="zero">0</p>
+    <p class="zero-sub">pings. Esa es toda la telemetría de Oxygen.</p>
+    <p class="lede">Fork de Firefox con el código de medición <b>borrado</b>, no desactivado. Abajo está el libro de cuentas: cada línea que falta, con su parche.</p>
+    <p><a class="btn" href="#">Descargar v0.1</a><a class="btn alt" href="#">Ver parches</a></p>
+    <div class="browser" role="img" aria-label="about:telemetry vacío en Oxygen">
+      <div class="chrome"><i></i><i></i><i></i><span class="url">about:telemetry</span></div>
+      <div class="page">
+        <h2>No hay nada que mostrar aquí.</h2>
+        <p>Esta página en Firefox lista tus pings. En Oxygen el módulo no existe.</p>
+        <span class="ping">0 pings · 0 subidas · 0 experimentos</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Libro de cuentas — líneas eliminadas por grupo</h3>
+  <table>
+    <tr><th>Grupo</th><th>Qué cayó</th><th style="text-align:right">− líneas</th></tr>
+    <tr><td><b>02</b> sync-wipe</td><td>Sync/FxA entero (283 ficheros)</td><td class="n del">−109.519</td></tr>
+    <tr><td><b>03</b> core</td><td>Pings, experimentos, Glean, updates</td><td class="n del">−53.931</td></tr>
+    <tr><td><b>04</b> feat-a</td><td>newtab, urlbar, search, addons…</td><td class="n del">−50.908</td></tr>
+    <tr><td><b>09</b> network</td><td>DNS, caché, QUIC, canales, Rust</td><td class="n del">−10.791</td></tr>
+    <tr><td><b>06</b> tail</td><td>Cola larga + buildfixes</td><td class="n del">−13.684</td></tr>
+    <tr><td><b>05</b> feat-b</td><td>SERP, shell, clusters, devtools</td><td class="n del">−11.595</td></tr>
+    <tr><td><b>08</b> js</td><td>Restos bracket-notation</td><td class="n del">−11.612</td></tr>
+    <tr><td><b>10+07</b> plat</td><td>Plataformas, índice Glean</td><td class="n del">−737</td></tr>
+    <tr><td><b>01</b> product</td><td>Branding y defaults</td><td class="n del">−267</td></tr>
+    <tr class="total"><td colspan="2">Total (10 parches, +5.165 de guards y comentarios)</td><td class="n del">−263.044</td></tr>
+  </table>
+  <p class="note">$ git apply patches/core/*.patch — 0 fuzz · verifica tú cada número</p>
+
+  <h3 class="sec">Preguntas de verdad</h3>
+  <div class="cols">
+    <div class="qa"><b>¿Recoge algo?</b><p>No. Si un día llama a casa solo, es un bug y se borra como lo demás.</p></div>
+    <div class="qa"><b>¿Por qué no un user.js?</b><p>Las preferencias se revierten; el código borrado, no.</p></div>
+    <div class="qa"><b>¿Y mis extensiones?</b><p>Todas. Es Firefox debajo, con uBlock de serie.</p></div>
+    <div class="qa"><b>¿Quién lo paga?</b><p>Nadie: sin empresa, sin sponsors, sin buscador de pago. MPL-2.0.</p></div>
+  </div>
+
+  <footer><span>© 2026 Oxygen — draft E cero</span><span><a href="../">← volver</a></span></footer>
+</div>
+</body>
+</html>

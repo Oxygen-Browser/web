@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRAFT Dossier-luz — Oxygen</title>
+<link rel="stylesheet" href="dossier-base.css">
+<style>
+  html.luz {
+    --bg: #f2f6fa; --bg-soft: #e6eef6; --card: #ffffff;
+    --line: #cfdce9; --hair: #e0eaf3; --text: #122336;
+    --muted: #4d647e; --faint: #8298b0; --accent: #0077d6;
+    --ok: #0a8a4d; --warn: #8a5f00;
+  }
+  html.luz body { background: var(--bg); color: var(--text); }
+  html.luz .nav { background: rgba(242, 246, 250, .94); }
+  html.luz .terminal { background: #0d1626; }
+  html.luz .btn { color: #fff; border-color: var(--accent); }
+  html.luz ::selection { color: #fff; }
+  .luz-toggle { background: none; border: 1px solid var(--line); color: var(--text);
+    border-radius: 6px; padding: 5px 12px; cursor: pointer; font-family: var(--mono);
+    font-size: .8rem; }
+  .hero-lockup img { width: min(400px, 82vw); height: auto; }
+  html.luz .hero-lockup img { filter: drop-shadow(0 10px 30px rgba(0,119,214,.25)); }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="./"><img src="../assets/img/logo.png" alt="" width="28" height="28">OXYGEN · draft N</a>
+    <nav class="nav-links">
+      <a href="#features">cambios</a>
+      <a href="#faq">faq</a>
+      <button class="luz-toggle" id="luz" aria-label="Cambiar tema">☾ oscuro / ☀ luz</button>
+      <a href="./">← índice</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">el dossier, en papel — con interruptor</p>
+      <figure class="hero-lockup" style="margin:0 0 24px">
+        <img src="../assets/img/lockup.png" alt="Oxygen Browser" width="400" height="118">
+      </figure>
+      <h1>La telemetría no está desactivada. <em>Está borrada.</em></h1>
+      <p class="lead">El mismo dossier de siempre, ahora también en claro.
+        <strong>257.879 líneas fuera</strong> de un Firefox que por lo demás
+        sigue intacto.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#">Descargar para Windows</a>
+        <a class="btn ghost" href="#">Leer los parches</a>
+      </div>
+      <p class="hero-note">v0.1 · base Firefox 156 · MPL-2.0 · <button class="luz-toggle" id="luz2">probar en oscuro</button></p>
+      <div class="terminal"><span class="p">$</span> git apply patches/core/*.patch <span class="c"># 10 ficheros, 0 fuzz</span></div>
+      <div class="stats">
+        <div class="stat"><b><i>−</i>257.879</b><span>líneas menos</span></div>
+        <div class="stat"><b>10</b><span>parches auditables</span></div>
+        <div class="stat"><b>0</b><span>peticiones sin ti</span></div>
+        <div class="stat"><b>70M</b><span>líneas intactas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="features">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2>Qué cambió</h2></div>
+      <p class="sub">Seis decisiones impuestas en el código.</p>
+      <ol class="flist">
+        <li><span class="fnum">/01</span><h3>Sin tubería de telemetría</h3><p>No queda nada de lo que "darse de baja".</p></li>
+        <li><span class="fnum">/02</span><h3>Sin cuentas ni Sync</h3><p>Tus datos se quedan en tu disco.</p></li>
+        <li><span class="fnum">/03</span><h3>Sin updates silenciosas</h3><p>Tú instalas las releases.</p></li>
+        <li><span class="fnum">/04</span><h3>uBlock de serie, Firefox debajo</h3><p>Migrar es abrir tu perfil.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Preguntan mucho</h2></div>
+      <p class="sub"></p>
+      <details>
+        <summary>¿Recoge algo?</summary>
+        <p>No. Si llama a casa solo, es un bug.</p>
+      </details>
+      <details>
+        <summary>¿Por qué no un user.js?</summary>
+        <p>Las prefs se revierten; el código borrado, no.</p>
+      </details>
+      <details>
+        <summary>¿Quién lo paga?</summary>
+        <p>Nadie. MPL-2.0.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Oxygen — draft N dossier-luz</span>
+    <nav><a href="./">← índice</a></nav>
+  </div>
+</footer>
+<script>
+(function () {
+  function paint() {
+    var light = document.documentElement.classList.contains("luz");
+    document.getElementById("luz").textContent = light ? "☀ luz / ☾ oscuro" : "☾ oscuro / ☀ luz";
+    var b2 = document.getElementById("luz2");
+    if (b2) b2.textContent = light ? "probar en oscuro" : "probar en luz";
+  }
+  function flip() {
+    document.documentElement.classList.toggle("luz");
+    try { localStorage.setItem("oxygen-draft-luz", document.documentElement.classList.contains("luz") ? "1" : "0"); } catch (e) {}
+    paint();
+  }
+  try { if (localStorage.getItem("oxygen-draft-luz") !== "0") document.documentElement.classList.add("luz"); } catch (e) {
+    document.documentElement.classList.add("luz");
+  }
+  document.getElementById("luz").addEventListener("click", flip);
+  document.getElementById("luz2").addEventListener("click", flip);
+  paint();
+})();
+</script>
+</body>
+</html>

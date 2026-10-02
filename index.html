@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oxygen Browser — a Firefox fork with nothing to send home</title>
+  <meta name="description" content="Oxygen is a transparent Firefox fork with telemetry removed at the source. No accounts, no experiments, no pings home.">
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="./"><img src="assets/img/logo.png" alt="" width="28" height="28">OXYGEN</a>
+    <button class="menu-toggle" data-menu-toggle aria-label="Menu">menu</button>
+    <nav class="nav-links" data-nav-links>
+      <a href="#features">features</a>
+      <a href="#transparency">transparency</a>
+      <a href="#download">download</a>
+      <a href="#faq">faq</a>
+      <a href="privacy.html">privacy</a>
+      <a data-github href="#">github</a>
+      <a class="lang" href="es/">es</a>
+      <a class="btn small" data-releases href="#">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">breathe easy — a Firefox fork, minus the phone-home</p>
+      <figure class="hero-lockup">
+        <img src="assets/img/lockup.png" alt="Oxygen Browser" width="430" height="126">
+      </figure>
+      <h1>Telemetry isn't disabled. <em>It's deleted.</em></h1>
+      <p class="lead">Oxygen starts from Mozilla Firefox and removes the parts
+        that report back: Glean writers, legacy pings, experiments, Sync,
+        background update checks. <strong>257,879 lines gone</strong> — the rest
+        is the browser you already know.</p>
+      <div class="hero-cta">
+        <a class="btn" data-releases data-dl-primary href="#">Download for Windows</a>
+        <a class="btn ghost" data-github href="#">Read the patches</a>
+      </div>
+      <p class="hero-note">v0.1 · Firefox 156 base · Windows 64-bit · MPL-2.0 · free forever</p>
+      <p class="element-strip">O <b>·</b> 8 <b>·</b> 15.999 <b>·</b> trackers: 0</p>
+      <div class="terminal"><span class="p">$</span> git apply patches/core/*.patch <span class="c"># 10 files, 0 fuzz — then mach build</span></div>
+
+      <div class="stats">
+        <div class="stat"><b><i>−</i>257,879</b><span>lines removed vs upstream</span></div>
+        <div class="stat"><b>10</b><span>patch files, all auditable</span></div>
+        <div class="stat"><b>0</b><span>requests without your action</span></div>
+        <div class="stat"><b>70M</b><span>lines of Firefox left intact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="features">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2>What changed</h2></div>
+      <p class="sub">Six decisions, all enforced in source — not in a settings page you'll never open.</p>
+      <ol class="flist">
+        <li><span class="fnum">/01</span><h3>No telemetry pipeline</h3><p>Glean recorders, legacy ping senders, upload schedulers and their tests are gone from the tree — desktop, network, geolocation and platform collectors included. There is nothing left to "opt out" of.</p></li>
+        <li><span class="fnum">/02</span><h3>No accounts, no Sync</h3><p>Firefox Accounts and Sync are excised from the build. Bookmarks, passwords and history stay on your disk; use a dedicated password manager for the rest.</p></li>
+        <li><span class="fnum">/03</span><h3>No silent updates</h3><p>Background update checks, staged rollouts and update telemetry are out. When a new release exists, you hear about it — then <em>you</em> install it.</p></li>
+        <li><span class="fnum">/04</span><h3>uBlock Origin ships with it</h3><p>Unbiased blocking from first launch, as a regular distribution extension. Remove it in two clicks if you'd rather choose your own.</p></li>
+        <li><span class="fnum">/05</span><h3>Still Firefox underneath</h3><p>Gecko, full add-on compatibility, the same web platform. Migration is opening your profile, not relearning a browser.</p></li>
+        <li><span class="fnum">/06</span><h3>Every diff is public</h3><p>The whole fork is <code>10 patch files</code> against a pinned Firefox tag. Skim them over coffee — that's the entire trust model.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block transparency" id="transparency">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Check our work</h2></div>
+      <p class="sub">No reproducible-builds theater: the recipe is four commands and the result is the binary we ship.</p>
+      <div class="steps">
+        <div class="step"><span class="n">a.</span><div><b>Fetch clean Firefox.</b><p>Tag <code>FIREFOX_156_0_1_RELEASE</code>, straight from Mozilla. Nothing vendored, nothing prebuilt.</p></div></div>
+        <div class="step"><span class="n">b.</span><div><b>Apply ten patches.</b><p><code>git apply patches/core/*.patch</code> — strict mode, zero fuzz tolerated.</p></div></div>
+        <div class="step"><span class="n">c.</span><div><b>Build normally.</b><p>Plain <code>mach build</code> with the shipped <code>mozconfig.windows</code>.</p></div></div>
+        <div class="step"><span class="n">d.</span><div><b>Diff the binary.</b><p>Same bytes we publish, hashes on the Releases page. Discrepancies are bugs — file them.</p></div></div>
+      </div>
+      <p class="center"><a class="btn ghost" data-patches href="#">Browse patches/core/</a></p>
+    </div>
+  </section>
+
+  <section class="block" id="download">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Get it</h2></div>
+      <p class="sub">Beta. Rough edges included free of charge. Every release ships with hashes on GitHub.</p>
+      <div class="dl-grid">
+        <div class="dl-card"><div class="os">Windows · x64</div><h3>v0.1</h3><p>Installer and portable ZIP.</p><p><a class="btn" data-releases href="#">Releases →</a></p></div>
+        <div class="dl-card"><div class="os">Linux</div><h3>—</h3><p>Packaging in progress.</p><p class="soon">status: soon</p></div>
+        <div class="dl-card"><div class="os">macOS</div><h3>—</h3><p>Packaging in progress.</p><p class="soon">status: soon</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">04</span><h2>Asked often</h2></div>
+      <p class="sub"></p>
+      <details>
+        <summary>Does Oxygen collect anything at all?</summary>
+        <p>Nothing leaves your machine unless you make it leave: visiting a site, installing an extension, or enabling a feature that inherently needs the network. If you ever catch it phoning home on its own, that's a defect — report it and it'll get the same treatment as the other 257,879 lines.</p>
+      </details>
+      <details>
+        <summary>Why fork instead of using a user.js?</summary>
+        <p>Preferences can be flipped back by updates, and they can't remove code paths — dead upload machinery, keyed histograms, mirrored probes. Deletion is the only setting that can't be toggled.</p>
+      </details>
+      <details>
+        <summary>Will my extensions and profile work?</summary>
+        <p>Yes. It's Firefox under the paint: same profile format, same addons.mozilla.org. uBlock Origin is preinstalled; everything else installs exactly like you're used to.</p>
+      </details>
+      <details>
+        <summary>How do I update?</summary>
+        <p>You don't, automatically. New releases appear on GitHub with a changelog; download and install when you feel like it. Nothing checks, stages, or nags in the background.</p>
+      </details>
+      <details>
+        <summary>What about crash reports?</summary>
+        <p>Deliberately untouched for now: stock Firefox behavior, which asks before sending anything. Ripping it out entirely is on the roadmap — open an issue if you want it prioritized.</p>
+      </details>
+      <details>
+        <summary>Who's behind this, and what's the catch?</summary>
+        <p>One person, no company, no sponsors, no search-revenue deals, no affiliate anything. The catch is the opposite of usual: updates and ports (Linux, macOS) happen when evenings allow. MPL-2.0, like the Firefox it's cut from.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-lockup"><img src="assets/img/lockup.png" alt="Oxygen" width="150"></p>
+  </div>
+  <div class="wrap foot">
+    <span>© <span data-year>2026</span> Oxygen Browser — not affiliated with Mozilla. Firefox is a trademark of the Mozilla Foundation.</span>
+    <nav>
+      <a data-github href="#">github</a>
+      <a data-releases href="#">releases</a>
+      <a href="privacy.html">privacy</a>
+      <a href="es/">español</a>
+    </nav>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

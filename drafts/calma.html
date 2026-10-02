@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRAFT Calma — Oxygen</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #123; font-family: system-ui, sans-serif;
+    background: linear-gradient(180deg, #dceefb 0%, #f4f9fd 34%, #fbfdff 70%);
+    background-attachment: fixed; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 26px; }
+  nav { display: flex; justify-content: space-between; padding: 26px 0 0;
+    font-size: 15px; }
+  nav a { color: #123; text-decoration: none; margin-left: 20px; }
+  .hero { text-align: center; padding: 10vh 0 4vh; }
+  .breath { width: 120px; height: 120px; margin: 0 auto 30px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #bfe9ff, #2f9dff 55%, #0b5ed7);
+    box-shadow: 0 0 80px rgba(47,157,255,.45);
+    animation: breathe 5s ease-in-out infinite; }
+  @keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+  h1 { font-size: clamp(42px, 8vw, 88px); line-height: 1.0; margin: 0 0 16px;
+    font-weight: 800; letter-spacing: -.035em; color: #0b2440; }
+  h1 em { font-style: normal; color: #0b7bff; }
+  .sub { font-size: 20px; color: #3d5a76; max-width: 540px; margin: 0 auto 34px; }
+  .cta { display: inline-block; background: #0b2440; color: #fff; padding: 18px 52px;
+    border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 18px; }
+  .cta small { display: block; font-weight: 400; font-size: 13px; opacity: .7; margin-top: 4px; }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin: 60px 0 10px; }
+  .trio div { background: rgba(255,255,255,.7); border: 1px solid #d4e5f4;
+    border-radius: 22px; padding: 26px 22px; backdrop-filter: blur(6px); }
+  .trio b { font-size: 34px; letter-spacing: -.02em; display: block; color: #0b2440; }
+  .trio span { color: #3d5a76; font-size: 14px; }
+  h2 { font-size: clamp(28px, 4.6vw, 44px); letter-spacing: -.025em; margin: 70px 0 8px;
+    color: #0b2440; }
+  .calm { color: #3d5a76; max-width: 56ch; font-size: 18px; }
+  .calm li { margin: 14px 0; list-style: none; padding-left: 0; }
+  .calm li::before { content: "○ "; color: #0b7bff; }
+  .quote { border-left: 4px solid #0b7bff; padding-left: 22px; margin: 44px 0;
+    font-size: 24px; font-style: italic; color: #0b2440; }
+  footer { margin: 70px 0 0; padding: 24px 0 60px; border-top: 1px solid #cfe2f3;
+    display: flex; justify-content: space-between; color: #5d7d99; font-size: 14px; }
+  footer a { color: #0b2440; }
+  @media (max-width: 640px) { .trio { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .breath { animation: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><strong>O₂ · draft F</strong><span><a href="#">descargar</a><a href="../">← volver</a></span></nav>
+  <div class="hero">
+    <div class="breath" role="img" aria-label="Respiración"></div>
+    <h1>Internet,<br>con <em>calma</em></h1>
+    <p class="sub">Oxygen es Firefox al que se le ha quitado el ruido: sin telemetría, sin cuentas, sin prisas. Solo queda navegar.</p>
+    <a class="cta" href="#">Descargar para Windows<small>v0.1 · gratis · MPL-2.0</small></a>
+  </div>
+  <div class="trio">
+    <div><b>0</b><span>peticiones sin que actúes tú</span></div>
+    <div><b>−258k</b><span>líneas de ruido eliminadas</span></div>
+    <div><b>10</b><span>parches que lo explican todo</span></div>
+  </div>
+  <h2>Menos software,<br>más navegador</h2>
+  <ul class="calm">
+    <li><b>Sin telemetría.</b> Borrada del código: Glean, pings, experimentos, red y plataformas.</li>
+    <li><b>Sin cuentas.</b> Ni Sync ni FxA. Tus datos no salen de tu disco.</li>
+    <li><b>Sin prisas.</b> Las updates las instalas tú, cuando quieras.</li>
+    <li><b>Igual Firefox.</b> Mismo motor, tus extensiones, uBlock de serie.</li>
+  </ul>
+  <div class="quote">“Como el aire: invisible cuando funciona, esencial siempre.”</div>
+  <p class="calm">Diez ficheros de parche sobre Firefox 156. Se aplican sin fuzz, se compilan con un comando. <a href="#">Léelos aquí</a> o <a href="#">descarga v0.1 para Windows</a>.</p>
+  <footer><span>© 2026 Oxygen — draft F calma</span><span><a href="../">← volver</a></span></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRAFT Dossier-Oxygen — Oxygen</title>
+<link rel="stylesheet" href="dossier-base.css">
+<style>
+  .hero-lockup { margin: 0 0 26px; position: relative; }
+  .hero-lockup img { width: min(430px, 84vw); height: auto;
+    filter: drop-shadow(0 0 44px rgba(76,195,255,.30));
+    animation: breathe 4.6s ease-in-out infinite; }
+  @keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.025); } }
+  .element-strip { font-family: var(--mono); font-size: .8rem; letter-spacing: .2em;
+    color: var(--faint); margin-top: 18px; }
+  .element-strip b { color: var(--accent); font-weight: 400; }
+  .o-mark { display: inline-block; width: 30px; vertical-align: -6px; }
+  @media (prefers-reduced-motion: reduce) { .hero-lockup img { animation: none; } }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="./"><img src="../assets/img/logo.png" alt="" width="28" height="28">OXYGEN · draft M</a>
+    <nav class="nav-links">
+      <a href="#features">cambios</a>
+      <a href="#transparency">transparencia</a>
+      <a href="#download">descargar</a>
+      <a href="#faq">faq</a>
+      <a href="./">← índice</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">respira — un fork de Firefox, menos el teléfono</p>
+      <figure class="hero-lockup" style="margin-left:0;margin-right:0">
+        <img src="../assets/img/lockup.png" alt="Oxygen Browser" width="430" height="126">
+      </figure>
+      <h1>La telemetría no está desactivada. <em>Está borrada.</em></h1>
+      <p class="lead">Oxygen parte de Mozilla Firefox y quita lo que informa:
+        escritores Glean, pings legacy, experimentos, Sync, comprobaciones de
+        actualización en segundo plano. <strong>257.879 líneas fuera</strong> — lo
+        demás es el navegador que ya conoces.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#">Descargar para Windows</a>
+        <a class="btn ghost" href="#">Leer los parches</a>
+      </div>
+      <p class="hero-note">v0.1 · base Firefox 156 · Windows 64-bit · MPL-2.0 · gratis siempre</p>
+      <p class="element-strip">O <b>·</b> 8 <b>·</b> 15.999 <b>·</b> trackers: 0</p>
+      <div class="terminal"><span class="p">$</span> git apply patches/core/*.patch <span class="c"># 10 ficheros, 0 fuzz — y mach build</span></div>
+
+      <div class="stats">
+        <div class="stat"><b><i>−</i>257.879</b><span>líneas menos que upstream</span></div>
+        <div class="stat"><b>10</b><span>ficheros de parche, auditables</span></div>
+        <div class="stat"><b>0</b><span>peticiones sin que actúes tú</span></div>
+        <div class="stat"><b>70M</b><span>líneas de Firefox intactas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="features">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2>Qué cambió</h2></div>
+      <p class="sub">Seis decisiones, impuestas en el código — no en una página de ajustes que nunca abrirás.</p>
+      <ol class="flist">
+        <li><span class="fnum">/01</span><h3>Sin tubería de telemetría</h3><p>Grabadores Glean, emisores de pings legacy, planificadores de subida y sus tests, fuera del árbol. No queda nada de lo que "darse de baja".</p></li>
+        <li><span class="fnum">/02</span><h3>Sin cuentas ni Sync</h3><p>Tus datos se quedan en tu disco. Usa un gestor dedicado para lo demás.</p></li>
+        <li><span class="fnum">/03</span><h3>Sin updates silenciosas</h3><p>Tú instalas las releases. Nada comprueba ni descarga por su cuenta.</p></li>
+        <li><span class="fnum">/04</span><h3>uBlock de serie, Firefox debajo</h3><p>Mismo motor, mismos complementos. Migrar es abrir tu perfil.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block transparency" id="transparency">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Compruébalo en cuatro gestos</h2></div>
+      <p class="sub">La receta es corta y el resultado es el binario que distribuimos.</p>
+      <div class="steps">
+        <div class="step"><span class="n">a.</span><div><b>Firefox limpio.</b><p>Etiqueta <code>FIREFOX_156_0_1_RELEASE</code>, directa de Mozilla.</p></div></div>
+        <div class="step"><span class="n">b.</span><div><b>Diez parches.</b><p><code>git apply patches/core/*.patch</code> — cero fuzz tolerado.</p></div></div>
+        <div class="step"><span class="n">c.</span><div><b>Un build.</b><p><code>mach build</code> con el mozconfig incluido.</p></div></div>
+        <div class="step"><span class="n">d.</span><div><b>Un diff.</b><p>Mismos bytes publicados. Lo demás son bugs.</p></div></div>
+      </div>
+      <p class="center"><a class="btn ghost" href="#">Ver patches/core/</a></p>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Preguntan mucho</h2></div>
+      <p class="sub"></p>
+      <details>
+        <summary>¿Recoge algo?</summary>
+        <p>No. Si un día llama a casa solo, es un bug y se borra como lo demás.</p>
+      </details>
+      <details>
+        <summary>¿Por qué no un user.js?</summary>
+        <p>Las prefs se revierten; el código borrado, no.</p>
+      </details>
+      <details>
+        <summary>¿Quién lo paga?</summary>
+        <p>Nadie. Sin empresa ni sponsors. MPL-2.0.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Oxygen — draft M dossier-oxygen</span>
+    <nav><a href="./">← índice</a></nav>
+  </div>
+</footer>
+</body>
+</html>

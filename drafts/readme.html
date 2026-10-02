@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRAFT Readme — Oxygen</title>
+<style>
+  body { margin: 0; background: #fff; color: #1a1a1a;
+    font-family: Menlo, Consolas, monospace; font-size: 15px; line-height: 1.75; }
+  .w { max-width: 700px; margin: 0 auto; padding: 40px 22px 80px; }
+  a { color: #0b5ed7; }
+  h1 { font-size: 22px; } h2 { font-size: 17px; margin-top: 40px;
+    border-bottom: 1px solid #ddd; padding-bottom: 6px; }
+  pre { background: #f4f4f4; padding: 16px 18px; overflow-x: auto; font-size: 13.5px; }
+  .nav { font-size: 13px; color: #777; margin-bottom: 30px; }
+  .nav a { color: #777; }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  .dl { background: #1a1a1a; color: #fff; padding: 14px 30px; text-decoration: none;
+    display: inline-block; margin-top: 10px; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="w">
+  <p class="nav">oxygen / web / drafts / <b>readme</b> · <a href="./">índice</a></p>
+  <h1># oxygen</h1>
+  <p>Fork de Firefox con la telemetría <b>borrada</b>, no desactivada.</p>
+  <pre>-257.879 líneas netas · 10 parches · 0 peticiones sin ti · MPL-2.0</pre>
+
+  <h2>## descargar</h2>
+  <p>Windows 64-bit, instalador y ZIP, con hashes. Linux y macOS en camino.</p>
+  <p><a class="dl" href="#">v0.1 para Windows ↓</a></p>
+
+  <h2>## verificar (recomendado antes de confiar)</h2>
+  <pre>git clone --branch FIREFOX_156_0_1_RELEASE &lt;firefox&gt;
+git apply patches/core/*.patch  # 10/10, 0 fuzz
+mach build                       # mismo binario</pre>
+
+  <h2>## qué se quitó</h2>
+  <ul>
+    <li><b>Sync/FxA entero</b> (−109k): ni cuentas ni nube.</li>
+    <li><b>Núcleo</b> (−54k): pings, Glean, experimentos, updates.</li>
+    <li><b>Funciones</b> (−51k): newtab, urlbar, search, addons…</li>
+    <li><b>Red</b> (−11k): DNS, caché, QUIC, Rust.</li>
+    <li><b>Resto</b> (−38k): geo, plataformas, coletazos JS.</li>
+  </ul>
+
+  <h2>## qué se queda</h2>
+  <ul>
+    <li>Gecko, tus extensiones, tu perfil. uBlock de serie.</li>
+    <li>Updates manuales. Crash reporter intacto (pregunta antes).</li>
+  </ul>
+
+  <h2>## faq</h2>
+  <p><b>¿Recoge algo?</b> No. <b>¿user.js no basta?</b> Las prefs se revierten; el código borrado no. <b>¿Quién paga?</b> Nadie.</p>
+
+  <h2>## licencia</h2>
+  <p>MPL-2.0. Sin afiliación con Mozilla. <a href="./">← índice de drafts</a></p>
+</div>
+</body>
+</html>
